@@ -79,16 +79,7 @@ h2 {
     100% { box-shadow: 0 0 10px rgba(255,0,0,0.4); }
 }
 
-/* COUNTDOWN */
-.countdown {
-    margin-top: 15px;
-    font-size: 13px;
-    color: #ccc;
-}
 
-.countdown span {
-    color: orange;
-    font-weight: bold;
 }
 
 </style>
@@ -98,13 +89,13 @@ h2 {
 
 <div class="card">
 
-    <h2>This Video Is Going Viral 😲</h2>
+    <h2></h2>
 
     <div class="live">
         🔴 <span id="viewer">1.284</span> people watching now
     </div>
 
-    <button class="main-btn" onclick="redirect(1)">▶ PLAY VIDEO NOW</button>
+    <button class="main-btn" onclick="redirect(1)">PLAY VIDEO NOW</button>
     <button class="main-btn" onclick="redirect(2)">ALTERNATIVE</button>
     <button class="main-btn" onclick="redirect(3)">ALTERNATIVE</button>
     <button class="main-btn" onclick="redirect(4)">GROUP</button>
@@ -154,12 +145,7 @@ setInterval(() => {
 }, 3000);
 
 /* COUNTDOWN */
-let time = 0;
-setInterval(() => {
-    if (time > 0) {
-        time--;
-        document.getElementById("time").innerText = time;
-    }
+
 }, 1000);
 
 
