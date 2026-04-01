@@ -3,52 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Redirect</title>
+<title>Watch Video</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #1a1a1a, #000);
+    background: linear-gradient(135deg, #000000, #1a1a1a);
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
 }
 
 .card {
-    background: #111;
+    background: #f2f2f2;
     border-radius: 20px;
     padding: 30px;
-    width: 370px;
+    width: 360px;
     text-align: center;
-    box-shadow: 0 0 40px rgba(255,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
-/* HEADLINE */
 h2 {
-    font-size: 22px;
-    margin-bottom: 10px;
+    margin: 10px 0;
+    font-size: 20px;
 }
 
-/* LIVE COUNTER */
-.live {
-    font-size: 13px;
-    color: #aaa;
-    margin-bottom: 15px;
-}
-
-.live span {
-    color: #ff3b3b;
-    font-weight: bold;
+p {
+    font-size: 14px;
+    color: #555;
 }
 
 /* BUTTON */
 .main-btn {
     margin-top: 12px;
     width: 100%;
-    padding: 15px;
+    padding: 14px;
     border-radius: 12px;
     border: none;
     font-weight: bold;
@@ -56,108 +47,55 @@ h2 {
     color: white;
     cursor: pointer;
     background: linear-gradient(45deg, red, orange);
-    box-shadow: 0 5px 20px rgba(255,0,0,0.5);
+    box-shadow: 0 5px 15px rgba(255,0,0,0.4);
     transition: all 0.25s ease;
-    animation: pulse 2s infinite;
 }
 
 /* HOVER */
 .main-btn:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 10px 30px rgba(255,0,0,0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255,0,0,0.6);
 }
 
 /* CLICK */
 .main-btn:active {
-    transform: scale(0.96);
-}
-
-/* PULSE EFFECT */
-@keyframes pulse {
-    0% { box-shadow: 0 0 10px rgba(255,0,0,0.4); }
-    50% { box-shadow: 0 0 25px rgba(255,0,0,0.9); }
-    100% { box-shadow: 0 0 10px rgba(255,0,0,0.4); }
+    transform: scale(0.97);
 }
 </style>
+
 </head>
 
 <body>
 
 <div class="card">
-    <h2>Live Stream</h2>
-    <div class="live">
-        🔴 <span id="viewer">1.284</span> people watching now
-    </div>
-    <button class="main-btn" onclick="redirect(1)">PLAY VIDEO NOW</button>
-    <button class="main-btn" onclick="redirect(2)">ALTERNATIVE 1</button>
-    <button class="main-btn" onclick="redirect(3)">ALTERNATIVE 2</button>
-    <button class="main-btn" onclick="redirect(4)">GROUP</button>
-    <div class="countdown" id="countdown"></div>
+
+    <h2>This Video Is Going Viral 😲</h2>
+    <p>Tap the button below to watch the full video</p>
+
+    <button class="main-btn" onclick="play1()">▶ PLAY VIDEO NOW</button>
+    <button class="main-btn" onclick="play2()">🔥 WATCH FULL HD</button>
+    <button class="main-btn" onclick="play3()">🚀 WATCH WITHOUT ADS</button>
+    <button class="main-btn" onclick="play4()">🎬 OPEN VIDEO LINK</button>
+
 </div>
 
 <script>
-/* DETECT DEVICE */
-function isMobile() {
-    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+function play1() {
+    window.location.href = "https://link1.com";
 }
 
-/* REDIRECT LOGIC */
-function redirect(type) {
-    const links = {
-        1: "https://x-hubb.github.io/H4b5/",
-        2: "https://rungbeacon.com/wihbb85w?key=00584323454ed6c4c1f322904a45a436",
-        3: "https://videy.co/v/?id=kkfBML911",
-        4: "https://www.facebook.com/groups/1405015587511712?locale=id_ID"
-    };
-
-    if (links[type]) {
-        window.location.href = links[type]; // Redirect to the corresponding link
-    } else {
-        console.error("Invalid link type:", type);
-    }
+function play2() {
+    window.location.href = "https://link2.com";
 }
 
-/* FAKE VIEWER COUNTER */
-setInterval(() => {
-    let el = document.getElementById("viewer");
-    let num = parseInt(el.innerText.replace(".", ""));
-    num += Math.floor(Math.random() * 5);
-    el.innerText = num.toLocaleString("id-ID");
-}, 3000);
-
-/* COUNTDOWN TIMER */
-function startCountdown() {
-    let countdown = document.getElementById("countdown");
-    let countdownTime = 10; // countdown time in seconds
-
-    const timer = setInterval(() => {
-        countdown.innerText = Starting in ${countdownTime} seconds...;
-        countdownTime--;
-
-        if (countdownTime < 0) {
-            clearInterval(timer);
-            countdown.innerText = 'Now Live!';
-        }
-    }, 1000);
+function play3() {
+    window.location.href = "https://link3.com";
 }
 
-startCountdown(); // start the countdown on page load
+function play4() {
+    window.location.href = "https://link4.com";
+}
 </script>
-
-<!-- Histats.com  START  (async)-->
-<script type="text/javascript">
-var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,4712326,4,0,0,0,00010000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();
-</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4712326&101" alt="" border="0"></a></noscript>
-<!-- Histats.com  END  -->
 
 </body>
 </html>
