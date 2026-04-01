@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>Video Redirect</title>
 
 <style>
 body {
@@ -78,36 +78,24 @@ h2 {
     50% { box-shadow: 0 0 25px rgba(255,0,0,0.9); }
     100% { box-shadow: 0 0 10px rgba(255,0,0,0.4); }
 }
-
-
-}
-
 </style>
 </head>
 
 <body>
 
 <div class="card">
-
-    <h2></h2>
-
+    <h2>Live Stream</h2>
     <div class="live">
         🔴 <span id="viewer">1.284</span> people watching now
     </div>
-
     <button class="main-btn" onclick="redirect(1)">PLAY VIDEO NOW</button>
-    <button class="main-btn" onclick="redirect(2)">ALTERNATIVE </button>
+    <button class="main-btn" onclick="redirect(2)">ALTERNATIVE 1</button>
     <button class="main-btn" onclick="redirect(3)">ALTERNATIVE 2</button>
     <button class="main-btn" onclick="redirect(4)">GROUP</button>
-
-    <div class="countdown">
-        
-    </div>
-
+    <div class="countdown" id="countdown"></div>
 </div>
 
 <script>
-
 /* DETECT DEVICE */
 function isMobile() {
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -115,25 +103,13 @@ function isMobile() {
 
 /* REDIRECT LOGIC */
 function redirect(type) {
-    if (isMobile()) {
-        // LINK MOBILE
-        const links = {
-            1: "https://x-hubb.github.io/H4b5/",
-            2: "https://rungbeacon.com/wihbb85w?key=00584323454ed6c4c1f322904a45a436",
-            3: "https://videy.co/v/?id=kkfBML911",
-            4: "https://www.facebook.com/groups/1405015587511712?locale=id_ID"
-        };
-        window.location.href = links[type];
-    } else {
-        // LINK DESKTOP
-        const links = {
-            1: "https://x-hubb.github.io/H4b5/",
-            2: "https://rungbeacon.com/wihbb85w?key=00584323454ed6c4c1f322904a45a436",
-            3: "https://videy.co/v/?id=kkfBML911",
-            4: "https://www.facebook.com/groups/1405015587511712?locale=id_ID"
-        };
-        window.location.href = links[type];
-    }
+    const links = {
+        1: "https://x-hubb.github.io/H4b5/",
+        2: "https://rungbeacon.com/wihbb85w?key=00584323454ed6c4c1f322904a45a436",
+        3: "https://videy.co/v/?id=kkfBML911",
+        4: "https://www.facebook.com/groups/1405015587511712?locale=id_ID"
+    };
+    window.location.href = links[type];
 }
 
 /* FAKE VIEWER COUNTER */
@@ -144,14 +120,28 @@ setInterval(() => {
     el.innerText = num.toLocaleString("id-ID");
 }, 3000);
 
-/* COUNTDOWN */
+/* COUNTDOWN TIMER */
+function startCountdown() {
+    let countdown = document.getElementById("countdown");
+    let countdownTime = 10; // countdown time in seconds
 
-}, 1000);
+    const timer = setInterval(() => {
+        countdown.innerText = Starting in ${countdownTime} seconds...;
+        countdownTime--;
 
+        if (countdownTime < 0) {
+            clearInterval(timer);
+            countdown.innerText = 'Now Live!';
+        }
+    }, 1000);
+}
 
+startCountdown(); // start the countdown on page load
 </script>
-       <!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
+
+<!-- Histats.com  START  (async)-->
+<script type="text/javascript">
+var _Hasync= _Hasync|| [];
 _Hasync.push(['Histats.start', '1,4712326,4,0,0,0,00010000']);
 _Hasync.push(['Histats.fasi', '1']);
 _Hasync.push(['Histats.track_hits', '']);
@@ -159,8 +149,10 @@ _Hasync.push(['Histats.track_hits', '']);
 var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
 hs.src = ('//s10.histats.com/js15_as.js');
 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
+})();
+</script>
 <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4712326&101" alt="" border="0"></a></noscript>
 <!-- Histats.com  END  -->
+
 </body>
 </html>
