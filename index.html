@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch Now</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.card {
+    background: #111;
+    border-radius: 20px;
+    padding: 30px;
+    width: 370px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255,0,0,0.2);
+}
+
+/* HEADLINE */
+h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* LIVE COUNTER */
+.live {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.live span {
+    color: #ff3b3b;
+    font-weight: bold;
+}
+
+/* BUTTON */
+.main-btn {
+    margin-top: 12px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(45deg, red, orange);
+    box-shadow: 0 5px 20px rgba(255,0,0,0.5);
+    transition: all 0.25s ease;
+    animation: pulse 2s infinite;
+}
+
+/* HOVER */
+.main-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(255,0,0,0.8);
+}
+
+/* CLICK */
+.main-btn:active {
+    transform: scale(0.96);
+}
+
+/* PULSE EFFECT */
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(255,0,0,0.4); }
+    50% { box-shadow: 0 0 25px rgba(255,0,0,0.9); }
+    100% { box-shadow: 0 0 10px rgba(255,0,0,0.4); }
+}
+
+/* COUNTDOWN */
+.countdown {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #ccc;
+}
+
+.countdown span {
+    color: orange;
+    font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>This Video Is Going Viral 😲</h2>
+
+    <div class="live">
+        🔴 <span id="viewer">1.284</span> people watching now
+    </div>
+
+    <button class="main-btn" onclick="redirect(1)">▶ PLAY VIDEO NOW</button>
+    <button class="main-btn" onclick="redirect(2)">🔥 WATCH FULL HD</button>
+    <button class="main-btn" onclick="redirect(3)">🚀 WATCH WITHOUT ADS</button>
+    <button class="main-btn" onclick="redirect(4)">🎬 OPEN VIDEO LINK</button>
+
+    <div class="countdown">
+        ⏳ Offer ends in <span id="time">15</span> seconds
+    </div>
+
+</div>
+
+<script>
+
+/* DETECT DEVICE */
+function isMobile() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+/* REDIRECT LOGIC */
+function redirect(type) {
+    if (isMobile()) {
+        // LINK MOBILE
+        const links = {
+            1: "https://m-link1.com",
+            2: "https://m-link2.com",
+            3: "https://m-link3.com",
+            4: "https://m-link4.com"
+        };
+        window.location.href = links[type];
+    } else {
+        // LINK DESKTOP
+        const links = {
+            1: "https://d-link1.com",
+            2: "https://d-link2.com",
+            3: "https://d-link3.com",
+            4: "https://d-link4.com"
+        };
+        window.location.href = links[type];
+    }
+}
+
+/* FAKE VIEWER COUNTER */
+setInterval(() => {
+    let el = document.getElementById("viewer");
+    let num = parseInt(el.innerText.replace(".", ""));
+    num += Math.floor(Math.random() * 5);
+    el.innerText = num.toLocaleString("id-ID");
+}, 3000);
+
+/* COUNTDOWN */
+let time = 15;
+setInterval(() => {
+    if (time > 0) {
+        time--;
+        document.getElementById("time").innerText = time;
+    }
+}, 1000);
+
+</script>
+
+</body>
+</html>
